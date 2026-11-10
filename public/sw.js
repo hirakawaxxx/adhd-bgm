@@ -1,7 +1,7 @@
 // PRECACHE_REVISION is derived from the precached files; `node scripts/sw-revision.mjs`
 // rewrites it, and test/pwa.test.js fails while it is stale. Changing it changes this
 // file's bytes, which is what makes browsers install the new worker after a deploy.
-const PRECACHE_REVISION = '61b360bb75d8';
+const PRECACHE_REVISION = 'b30a7b4c7454';
 const CACHE_PREFIX = 'adhd-bgm-';
 const CACHE_NAME = `${CACHE_PREFIX}${PRECACHE_REVISION}`;
 const OFFLINE_FALLBACK_URL = '/';
