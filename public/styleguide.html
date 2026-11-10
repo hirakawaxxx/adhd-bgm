@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#eeede9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141716" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="集中ノイズ" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Soft Mint スタイルガイド</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="preload" href="fonts/zen-maru-gothic-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="components.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <script type="module" src="styleguide.js"></script>
+  </head>
+  <body>
+    <div class="sg-page">
+      <header class="sg-header">
+        <h1 class="ui-text-display">Soft Mint</h1>
+        <p class="ui-text-body ui-text-muted">Product UI スタイルガイド：やわらかい立体感・低刺激・落ち着き</p>
+      </header>
+
+      <main class="sg-columns">
+        <div class="sg-column">
+          <section class="sg-panel" aria-labelledby="sg-colors">
+            <h2 id="sg-colors" class="ui-text-heading">Color</h2>
+            <ul class="sg-swatches">
+              <li><span class="sg-swatch sg-swatch--primary"></span><span class="ui-text-label">Primary</span><code>--color-primary</code></li>
+              <li><span class="sg-swatch sg-swatch--strong"></span><span class="ui-text-label">Primary strong</span><code>--color-primary-strong</code></li>
+              <li><span class="sg-swatch sg-swatch--surface"></span><span class="ui-text-label">Surface</span><code>--color-surface-raised</code></li>
+              <li><span class="sg-swatch sg-swatch--bg"></span><span class="ui-text-label">Background</span><code>--color-bg</code></li>
+              <li><span class="sg-swatch sg-swatch--sunken"></span><span class="ui-text-label">Sunken</span><code>--color-surface-sunken</code></li>
+              <li><span class="sg-swatch sg-swatch--disabled"></span><span class="ui-text-label">Disabled</span><code>--color-disabled-bg</code></li>
+              <li><span class="sg-swatch sg-swatch--text"></span><span class="ui-text-label">Text</span><code>--color-text</code></li>
+              <li><span class="sg-swatch sg-swatch--focus"></span><span class="ui-text-label">Focus ring</span><code>--color-focus</code></li>
+            </ul>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-type">
+            <h2 id="sg-type" class="ui-text-heading">Typography</h2>
+            <div class="sg-type">
+              <p class="ui-text-display">Display 見出し</p>
+              <p class="ui-text-title">Title タイトル</p>
+              <p class="ui-text-heading">Heading 見出し</p>
+              <p class="ui-text-body">Body 本文。落ち着いて読める行間です。</p>
+              <p class="ui-text-label">Label ラベル</p>
+              <p class="ui-text-caption">Caption 補足や注意書き</p>
+            </div>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-elevation">
+            <h2 id="sg-elevation" class="ui-text-heading">Elevation</h2>
+            <div class="sg-levels">
+              <div class="sg-level sg-level--1"><span class="ui-text-label">Level 1</span></div>
+              <div class="sg-level sg-level--2"><span class="ui-text-label">Level 2</span></div>
+              <div class="sg-level sg-level--3"><span class="ui-text-label">Level 3</span></div>
+              <div class="sg-level sg-level--4"><span class="ui-text-label">Level 4</span></div>
+              <div class="sg-level sg-level--5"><span class="ui-text-label">Level 5</span></div>
+            </div>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-card">
+            <h2 id="sg-card" class="ui-text-heading">Card</h2>
+            <article class="ui-card sg-card">
+              <h3 class="ui-text-heading">カードのタイトル</h3>
+              <p class="ui-text-body ui-text-muted">白に近い面と大きな角丸。下の層が少し見える厚みで、背景から浮かせます。</p>
+              <button type="button" class="ui-button ui-button--primary">アクション</button>
+            </article>
+          </section>
+        </div>
+
+        <div class="sg-column">
+          <section class="sg-panel" aria-labelledby="sg-buttons">
+            <h2 id="sg-buttons" class="ui-text-heading">Buttons</h2>
+            <div class="sg-row">
+              <div class="sg-state"><button type="button" class="ui-button ui-button--primary">Primary</button><span class="ui-text-caption">Default</span></div>
+              <div class="sg-state"><button type="button" class="ui-button ui-button--primary sg-force-hover">Primary</button><span class="ui-text-caption">Hover</span></div>
+              <div class="sg-state"><button type="button" class="ui-button ui-button--primary" disabled>Primary</button><span class="ui-text-caption">Disabled</span></div>
+            </div>
+            <div class="sg-row">
+              <button type="button" class="ui-button ui-button--secondary">Secondary</button>
+              <button type="button" class="ui-button ui-button--primary is-pressed">Pressed</button>
+            </div>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-input">
+            <h2 id="sg-input" class="ui-text-heading">Input</h2>
+            <label class="sg-field">
+              <span class="ui-text-label ui-text-muted">検索</span>
+              <input class="ui-input" type="search" placeholder="Search…" />
+            </label>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-chips">
+            <h2 id="sg-chips" class="ui-text-heading">Chips</h2>
+            <div class="sg-row" role="group" aria-labelledby="sg-chips">
+              <button type="button" class="ui-chip" aria-pressed="true">集中</button>
+              <button type="button" class="ui-chip" aria-pressed="false">休憩</button>
+              <button type="button" class="ui-chip" aria-pressed="false">睡眠</button>
+            </div>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-tabs">
+            <h2 id="sg-tabs" class="ui-text-heading">Tabs</h2>
+            <div class="ui-segmented" role="group" aria-label="期間" data-exclusive>
+              <button type="button" class="ui-segmented__item" aria-pressed="true">日</button>
+              <button type="button" class="ui-segmented__item" aria-pressed="false">週</button>
+              <button type="button" class="ui-segmented__item" aria-pressed="false">月</button>
+            </div>
+            <div class="ui-tabs" role="tablist" aria-label="表示">
+              <button type="button" class="ui-tabs__item" role="tab" aria-selected="true" aria-controls="sg-tabpanel">概要</button>
+              <button type="button" class="ui-tabs__item" role="tab" aria-selected="false" aria-controls="sg-tabpanel" tabindex="-1">詳細</button>
+              <button type="button" class="ui-tabs__item" role="tab" aria-selected="false" aria-controls="sg-tabpanel" tabindex="-1">設定</button>
+            </div>
+            <p id="sg-tabpanel" class="ui-text-body ui-text-muted" role="tabpanel">概要のパネル</p>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-alerts">
+            <h2 id="sg-alerts" class="ui-text-heading">Alerts</h2>
+            <div class="ui-alert ui-alert--success">
+              <svg class="ui-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" /><path d="m8 12.5 2.8 2.8L16.2 9.5" />
+              </svg>
+              <span>保存しました。</span>
+            </div>
+            <div class="ui-alert ui-alert--warning">
+              <svg class="ui-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 4 2.8 19.5a1 1 0 0 0 .86 1.5h16.68a1 1 0 0 0 .86-1.5Z" /><path d="M12 10v4.5M12 17.5v.01" />
+              </svg>
+              <span>接続が不安定です。</span>
+            </div>
+            <div class="ui-alert ui-alert--error">
+              <svg class="ui-alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" /><path d="M12 7.5v5.5M12 16.5v.01" />
+              </svg>
+              <span>保存できませんでした。</span>
+            </div>
+          </section>
+
+          <section class="sg-panel" aria-labelledby="sg-slider">
+            <h2 id="sg-slider" class="ui-text-heading">Slider</h2>
+            <label class="sg-field">
+              <span class="ui-text-label ui-text-muted">音量</span>
+              <input class="ui-slider" type="range" min="0" max="100" value="40" />
+            </label>
+            <label class="sg-field">
+              <span class="ui-text-label ui-text-muted">無効</span>
+              <input class="ui-slider" type="range" min="0" max="100" value="60" disabled />
+            </label>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

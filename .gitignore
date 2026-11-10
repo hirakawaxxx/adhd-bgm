@@ -1,0 +1,9 @@
+.wrangler/
+node_modules/
+.DS_Store
+.dev.vars*
+.env*
+.cursor/tmp/
+# Downloaded by scripts/build-fonts.mjs (several MB each); only the glyph list is tracked.
+design/fonts/*
+!design/fonts/glyphs.txt

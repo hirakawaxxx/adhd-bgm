@@ -1,0 +1,177 @@
+/* App-specific layout. Colors, type and effects come from tokens.css / components.css. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: var(--font-body);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 30rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding:
+    calc(var(--space-8) + env(safe-area-inset-top))
+    calc(var(--space-5) + env(safe-area-inset-right))
+    calc(var(--space-6) + env(safe-area-inset-bottom))
+    calc(var(--space-5) + env(safe-area-inset-left));
+}
+
+@media (min-width: 48rem) {
+  body {
+    display: grid;
+    place-items: center;
+    padding: var(--space-10) var(--space-6);
+  }
+
+  .layout {
+    width: 100%;
+    min-height: 0;
+    padding: var(--space-10) var(--space-10) var(--space-8);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    box-shadow: var(--drop-4), var(--bevel-lg);
+  }
+}
+
+.lead {
+  margin-top: var(--space-2);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.noise-group {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.noise-text {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.volume {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.volume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#volume-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.play-area {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2) 0 var(--space-4);
+}
+
+.ui-button.play-button {
+  position: relative;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 136px;
+  box-shadow: var(--elevation-5);
+}
+
+@media (hover: hover) {
+  .ui-button.play-button:hover {
+    box-shadow: var(--elevation-5), var(--shadow-glow);
+  }
+}
+
+.ui-button.play-button:focus-visible {
+  box-shadow: var(--elevation-5), var(--shadow-glow);
+}
+
+/* Playing reads as "pushed in" with a slow breathing glow, not as a color change alone. */
+.ui-button.play-button[data-playing="true"] {
+  background: var(--color-primary-soft);
+  color: var(--color-text);
+  box-shadow: var(--shadow-inset);
+  transform: none;
+}
+
+.play-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--shadow-glow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--easing-standard);
+}
+
+.play-button[data-playing="true"]::after {
+  opacity: 0.5;
+  animation: breathe var(--duration-breath) var(--easing-breath) infinite alternate;
+}
+
+@keyframes breathe {
+  from { opacity: 0.35; }
+  to { opacity: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play-button[data-playing="true"]::after {
+    animation: none;
+  }
+}
+
+.play-icon {
+  width: var(--space-10);
+  height: var(--space-10);
+  fill: currentColor;
+}
+
+.play-button[data-playing="true"] .play-icon--play,
+.play-button[data-playing="false"] .play-icon--stop {
+  display: none;
+}
+
+.status-alert:not(.ui-alert--warning, .ui-alert--error),
+.status-alert:not(.ui-alert--warning) .status-icon--warning,
+.status-alert:not(.ui-alert--error) .status-icon--error {
+  display: none;
+}
+
+.footer {
+  margin-top: auto;
+}
