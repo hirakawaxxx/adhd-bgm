@@ -10,7 +10,11 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const DESIGN_DIR = join(ROOT, 'design', 'icon');
 const ICONS_DIR = join(ROOT, 'public', 'icons');
 const FAVICON_PATH = join(ROOT, 'public', 'favicon.svg');
-const PLAYWRIGHT_CACHE = join(homedir(), 'Library', 'Caches', 'ms-playwright');
+const PLAYWRIGHT_CACHES = [
+  join(homedir(), 'Library', 'Caches', 'ms-playwright'),
+  join(homedir(), '.cache', 'ms-playwright'),
+];
+const HEADLESS_BINARIES = ['chrome-headless-shell', 'headless_shell'];
 const SUPERSAMPLE = 4;
 
 const TARGETS = Object.freeze([
@@ -24,19 +28,23 @@ export function findChrome() {
   if (process.env.CHROME_PATH) {
     return process.env.CHROME_PATH;
   }
-  const candidates = existsSync(PLAYWRIGHT_CACHE)
-    ? readdirSync(PLAYWRIGHT_CACHE)
+  for (const cache of PLAYWRIGHT_CACHES) {
+    if (!existsSync(cache)) {
+      continue;
+    }
+    const candidates = readdirSync(cache)
       .filter((name) => name.startsWith('chromium_headless_shell-'))
       .sort()
       .reverse()
-      .flatMap((name) => readdirSync(join(PLAYWRIGHT_CACHE, name))
-        .map((platform) => join(PLAYWRIGHT_CACHE, name, platform, 'chrome-headless-shell')))
-    : [];
-  const found = candidates.find((path) => existsSync(path));
-  if (!found) {
-    throw new Error('Chrome Headless Shell not found. Run `pnpm dlx playwright install chromium` or set CHROME_PATH.');
+      .flatMap((name) => readdirSync(join(cache, name))
+        .flatMap((platform) => HEADLESS_BINARIES
+          .map((binary) => join(cache, name, platform, binary))));
+    const found = candidates.find((path) => existsSync(path));
+    if (found) {
+      return found;
+    }
   }
-  return found;
+  throw new Error('Chrome Headless Shell not found. Run `pnpm dlx playwright install chromium` or set CHROME_PATH.');
 }
 
 export function screenshot(chrome, url, [width, height], output) {
