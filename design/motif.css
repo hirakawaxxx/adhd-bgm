@@ -1,25 +1,7 @@
 /*
- * Drawn on a 180px canvas with the UI tokens (tuned for elements of roughly this size);
- * other sizes use `zoom`, which scales everything proportionally. --k (set by icon.js)
- * deepens the groove's inset at small final sizes so its edge does not vanish.
+ * Motif: one primary-strong wave in a sunken pill. Drawn on the 180px icon canvas;
+ * --k deepens the groove's inset at small sizes.
  */
-
-html,
-body {
-  margin: 0;
-  background: var(--color-bg);
-}
-
-.icon {
-  --k: 1;
-
-  display: grid;
-  place-items: center;
-  width: 180px;
-  height: 180px;
-  overflow: hidden;
-  background: var(--color-bg);
-}
 
 /* The groove's farthest point is 66.5px from the center; 1.06x stays inside the 72px safe circle. */
 .icon[data-variant="maskable"] .groove {

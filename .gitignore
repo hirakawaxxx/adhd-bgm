@@ -4,6 +4,6 @@ node_modules/
 .dev.vars*
 .env*
 .cursor/tmp/
-# Downloaded by scripts/build-fonts.mjs (several MB each); only the glyph list is tracked.
+# Downloaded by `design-kit fonts` (several MB each); only the glyph list is tracked.
 design/fonts/*
 !design/fonts/glyphs.txt
